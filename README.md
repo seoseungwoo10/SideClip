@@ -95,18 +95,6 @@ No build process required - this is a pure JavaScript extension that can be load
 4. Test copying items back to clipboard
 5. Test delete functionality and clear all
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
 ## Roadmap
 
 Future versions may include:
@@ -116,3 +104,7 @@ Future versions may include:
 - Image clipboard support
 - Pinned/favorite items
 - Export/import functionality
+
+## License
+
+MIT License
