@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideClip - Clipboard History</title>
+    <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">
+                <span class="icon">📋</span>
+                SideClip
+            </h1>
+            <button id="clearAllBtn" class="clear-all-btn" title="Clear all clipboard history">
+                Clear All
+            </button>
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="empty-state">
+            <div class="empty-icon">📋</div>
+            <p class="empty-text">Your clipboard history will appear here</p>
+            <p class="empty-subtext">Copy some text to get started!</p>
+        </div>
+
+        <!-- Clipboard history list -->
+        <div id="historyContainer" class="history-container">
+            <ul id="historyList" class="history-list">
+                <!-- History items will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- Confirmation dialog for clear all -->
+        <div id="confirmDialog" class="confirm-dialog hidden">
+            <div class="confirm-content">
+                <p>Are you sure you want to clear all clipboard history?</p>
+                <div class="confirm-buttons">
+                    <button id="confirmClearBtn" class="confirm-btn">Clear All</button>
+                    <button id="cancelClearBtn" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success notification -->
+        <div id="notification" class="notification hidden">
+            <span class="notification-icon">✓</span>
+            <span class="notification-text">Copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script src="sidepanel.js"></script>
+</body>
+</html>
