@@ -20,40 +20,30 @@ chrome.runtime.onInstalled.addListener(() => {
 
 // Handle keyboard shortcut command
 chrome.commands.onCommand.addListener(async (command) => {
+
+
+  console.log('Command received:', command);
+  
   if (command === 'toggle-side-panel') {
+
     try {
-      // Get the current active tab
-      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      // Chrome doesn't allow sidePanel.open() from keyboard shortcuts
+      // Instead, we'll highlight the extension icon and show a badge
+      console.log('Keyboard shortcut triggered - highlighting extension icon');
+
+      // Animate the extension icon to draw attention
+      chrome.action.setBadgeText({ text: 'Click!' });
+      chrome.action.setBadgeBackgroundColor({ color: '#4285f4' });
+      chrome.action.setTitle({ title: 'SideClip 아이콘을 클릭하여 클립보드 히스토리를 여세요' });
       
-      if (!tab) {
-        console.error('No active tab found for keyboard shortcut');
-        return;
-      }
+      // Clear the badge after 5 seconds
+      setTimeout(() => {
+        chrome.action.setBadgeText({ text: '' });
+        chrome.action.setTitle({ title: 'Open SideClip' });
+      }, 5000);
       
-      // Direct call for keyboard shortcuts (user gesture preserved)
-      await chrome.sidePanel.open({ tabId: tab.id });
     } catch (error) {
-      console.error('Error opening side panel from keyboard shortcut:', error);
-      
-      // Alternative approach: ensure side panel is enabled and try again
-      try {
-        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        await chrome.sidePanel.setOptions({
-          tabId: tab.id,
-          path: 'sidepanel.html',
-          enabled: true
-        });
-        // Small delay and retry
-        setTimeout(async () => {
-          try {
-            await chrome.sidePanel.open({ tabId: tab.id });
-          } catch (retryError) {
-            console.error('Retry failed:', retryError);
-          }
-        }, 100);
-      } catch (fallbackError) {
-        console.error('Keyboard shortcut fallback failed:', fallbackError);
-      }
+      console.error('Error handling keyboard shortcut:', error);
     }
   }
 });
@@ -61,41 +51,30 @@ chrome.commands.onCommand.addListener(async (command) => {
 // Handle extension icon click
 chrome.action.onClicked.addListener(async (tab) => {
   try {
+    // Clear any notification badges and reset title
+    chrome.action.setBadgeText({ text: '' });
+    chrome.action.setTitle({ title: 'Open SideClip' });
+    
     // Open side panel for the clicked tab directly
     await chrome.sidePanel.open({ tabId: tab.id });
+    console.log('Side panel opened successfully from icon click');
   } catch (error) {
     console.error('Error opening side panel from action click:', error);
-  }
-});
-
-// Function to toggle side panel (for keyboard shortcuts)
-async function toggleSidePanel() {
-  try {
-    // Get the current active tab
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     
-    if (!tab) {
-      console.error('No active tab found');
-      return;
-    }
-    
-    // Open side panel for the current tab
-    await chrome.sidePanel.open({ tabId: tab.id });
-  } catch (error) {
-    console.error('Error toggling side panel:', error);
-    
-    // Fallback: try to set the side panel path if opening fails
+    // Fallback: ensure side panel is properly configured
     try {
       await chrome.sidePanel.setOptions({
-        tabId: tab?.id,
+        tabId: tab.id,
         path: 'sidepanel.html',
         enabled: true
       });
+      console.log('Side panel options set, trying to open again');
+      await chrome.sidePanel.open({ tabId: tab.id });
     } catch (fallbackError) {
-      console.error('Fallback also failed:', fallbackError);
+      console.error('Fallback failed:', fallbackError);
     }
   }
-}
+});
 
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
