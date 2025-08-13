@@ -48,7 +48,7 @@ A Chrome extension that provides clipboard history functionality directly in the
 
 ## Keyboard Shortcuts
 
-- `Ctrl+Shift+H` - Toggle side panel
+- `Ctrl+Shift+H` - Icon badge => "Click!" 5 Seconds
 - `Ctrl+Shift+Delete` - Clear all history (when panel is open)
 - `Escape` - Close confirmation dialogs
 

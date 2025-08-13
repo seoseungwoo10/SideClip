@@ -48,7 +48,7 @@
 
 ## 키보드 단축키
 
-- `Ctrl+Shift+H` - 사이드 패널 토글
+- `Ctrl+Shift+H` - 아이콘 배치 => "Click!" 5초
 - `Ctrl+Shift+Delete` - 모든 히스토리 삭제 (패널이 열린 상태에서)
 - `Escape` - 확인 대화상자 닫기
 
