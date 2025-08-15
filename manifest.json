@@ -1,18 +1,33 @@
 {
   "manifest_version": 3,
   "name": "SideClip - Clipboard History",
-  "version": "1.0.0",
+  "version": "1.2.250815",
   "description": "Access your clipboard history directly in Chrome's side panel for improved productivity.",
   
   "permissions": [
     "storage",
     "sidePanel",
-    "activeTab"
+    "activeTab",
+    "contextMenus",
+    "scripting",
+    "clipboardRead"
+  ],
+
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
   ],
   
   "background": {
     "service_worker": "background.js"
   },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["imageDB.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   
   "content_scripts": [
     {
