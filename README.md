@@ -2,6 +2,12 @@
 
 A powerful Chrome extension that provides comprehensive clipboard history functionality directly in the browser's side panel, supporting both text and images with advanced features.
 
+## 📋 DEMO Screenshots
+
+- v1.2.250815 DEMO Screenshots
+
+![SideClip](./images/sideclip-demo-02.png)
+
 ## ✨ Features
 
 ### 📋 Text Management
