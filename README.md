@@ -1,110 +1,194 @@
 # SideClip - Chrome Clipboard History Extension
 
-A Chrome extension that provides clipboard history functionality directly in the browser's side panel.
+A powerful Chrome extension that provides comprehensive clipboard history functionality directly in the browser's side panel, supporting both text and images with advanced features.
 
-## Features
+## 📋 DEMO Screenshots
 
+- v1.2.250815 DEMO Screenshots
+
+![SideClip](./images/sideclip-demo-02.png)
+
+## ✨ Features
+
+### 📋 Text Management
 - **Automatic Text Capture**: Automatically saves copied text to clipboard history
-- **Side Panel Interface**: Clean, modern UI accessible via Chrome's side panel
-- **One-Click Copy**: Click any history item to copy it back to clipboard
-- **Delete Items**: Remove individual items or clear entire history
-- **Keyboard Shortcuts**: Quick access with Ctrl+Shift+H
-- **Persistent Storage**: History survives browser restarts
-- **Real-time Updates**: UI updates instantly when clipboard changes
+- **Smart Text Preview**: Shows first 100 characters with full content on click
+- **Text Formatting**: Preserves line breaks and whitespace
+- **Quick Copy**: One-click to copy any text item back to clipboard
 
-## Installation
+### 🖼️ Image Support
+- **Image Capture**: Right-click context menu to save images to history
+- **Thumbnail Previews**: High-quality thumbnails with responsive scaling
+- **Format Conversion**: Automatic PNG conversion for clipboard compatibility
+- **Size Information**: Display file size and dimensions
+- **Large Image Support**: Handles images up to 5MB with automatic cleanup
+
+### 🎨 User Interface
+- **Side Panel Interface**: Modern, responsive UI in Chrome's side panel
+- **Visual Distinction**: Clear indicators for text vs image items with icons
+- **Responsive Design**: Adapts to different panel sizes (300px-400px+)
+- **Hover Effects**: Smooth animations and visual feedback
+- **Glowing Borders**: Elegant hover effects on image thumbnails
+
+### 🔧 Advanced Features
+- **Persistent Storage**: IndexedDB for images, chrome.storage for text history
+- **Real-time Updates**: Instant UI updates when clipboard changes
+- **Smart Cleanup**: Automatic storage management and quota handling
+- **Error Recovery**: Robust error handling with fallback mechanisms
+- **CORS Solutions**: Background script handling for cross-origin images
+
+### ⌨️ Keyboard & Controls
+- **Keyboard Shortcuts**: Quick access with Ctrl+Shift+H (Cmd+Shift+H on Mac)
+- **Delete Management**: Remove individual items or clear entire history
+- **Confirmation Dialogs**: Safe deletion with user confirmation
+- **Context Menus**: Enhanced right-click menu with clipboard emoji
+
+## 🚀 Installation
 
 ### From Source (Development)
 
-1. Clone or download this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right
-4. Click "Load unpacked" and select the extension directory
-5. The SideClip icon should appear in your toolbar
+1. **Download**: Clone or download this repository
+2. **Chrome Extensions**: Navigate to `chrome://extensions/`
+3. **Developer Mode**: Enable "Developer mode" in the top right
+4. **Load Extension**: Click "Load unpacked" and select the extension directory
+5. **Verify**: The SideClip icon should appear in your toolbar
 
 ### From Chrome Web Store
 
-*Coming soon...*
+*Coming soon to Chrome Web Store...*
 
-## Usage
+## 📖 Usage Guide
 
-### Opening the Side Panel
+### Opening SideClip
 
-- Click the SideClip icon in the Chrome toolbar
-- Use the keyboard shortcut `Ctrl+Shift+H` (or `Cmd+Shift+H` on Mac)
+**Method 1**: Click the SideClip icon (📋) in Chrome toolbar  
+**Method 2**: Use keyboard shortcut `Ctrl+Shift+H` (or `Cmd+Shift+H` on Mac)
 
-### Copying Text to History
+### Text Operations
 
-1. Select any text on a webpage
-2. Copy it using `Ctrl+C` (or `Cmd+C` on Mac)
-3. The text automatically appears in your SideClip history
+1. **Copy Text**: Select any text and use `Ctrl+C` (or `Cmd+C`)
+2. **View History**: Text automatically appears in SideClip with timestamp
+3. **Reuse Text**: Click any text item to copy it back to clipboard
+4. **Delete Text**: Use the "×" button to remove individual items
 
-### Using Clipboard History
+### Image Operations
 
-1. Open the SideClip side panel
-2. Click any item in the history to copy it to your clipboard
-3. Use the "×" button to delete individual items
-4. Use "Clear All" to remove all history (with confirmation)
+1. **Save Image**: Right-click any image → "📋 SideClip에 이미지 복사"
+2. **View Images**: Images appear with thumbnails and size information
+3. **Copy Images**: Click image thumbnail to copy to clipboard (PNG format)
+4. **Image Details**: View dimensions and file size on hover
+### Management & Cleanup
 
-## Keyboard Shortcuts
+1. **Individual Delete**: Use "×" button next to any item
+2. **Clear All**: "Clear All" button removes entire history (with confirmation)
+3. **Auto Cleanup**: History limited to 50 items (oldest items removed automatically)
+4. **Storage Management**: Images over 5MB automatically skipped
 
-- `Ctrl+Shift+H` - Icon badge => "Click!" 5 Seconds
-- `Ctrl+Shift+Delete` - Clear all history (when panel is open)
-- `Escape` - Close confirmation dialogs
+## ⌨️ Keyboard Shortcuts & Controls
 
-## Technical Details
+- **`Ctrl+Shift+H`** - Toggle SideClip side panel
+- **`Escape`** - Close confirmation dialogs
+- **Click** - Copy item to clipboard
+- **Right-click + Context Menu** - Save images to SideClip
 
-- **Manifest Version**: 3
-- **Permissions**: storage, sidePanel, activeTab
-- **Storage Limit**: 50 most recent items
-- **Text Preview**: First 100 characters shown in list
-- **Supported Content**: Plain text only (MVP)
+## 🛠️ Technical Specifications
 
-## Privacy
+### Core Technology
+- **Manifest Version**: 3 (latest Chrome extension standard)
+- **Storage**: IndexedDB for images, chrome.storage.local for text
+- **Permissions**: storage, sidePanel, activeTab, contextMenus, scripting, clipboardRead
+- **Host Permissions**: All HTTP/HTTPS sites for CORS handling
 
-- All clipboard data is stored locally on your device
-- No data is sent to external servers
-- History is private to your browser profile
-- You can clear all data at any time
+### Performance & Limits
+- **History Limit**: 50 most recent items
+- **Image Size Limit**: 5MB maximum per image
+- **Text Preview**: First 100 characters in history list
+- **Storage Cleanup**: Automatic quota management
 
-## Development
+### Browser Support
+- **Chrome**: Version 114+ (Manifest V3 requirement)
+- **Side Panel API**: Chrome 114+ required
+- **IndexedDB**: Full browser support for image storage
+
+## 🔒 Privacy & Security
+
+- **Local Storage Only**: All data stored locally on your device
+- **No External Servers**: No data transmission to remote servers
+- **Profile Private**: History private to your browser profile
+- **User Control**: Complete control over data deletion
+- **CORS Compliance**: Secure cross-origin image handling
+
+## 🧪 Development
 
 ### Project Structure
 
 ```
-chrome-clipboard/
-├── manifest.json          # Extension manifest
-├── background.js          # Service worker
+SideClip/
+├── manifest.json          # Extension manifest (v3)
+├── background.js          # Service worker with image handling
 ├── content.js            # Content script for copy detection
-├── sidepanel.html        # Side panel HTML
-├── sidepanel.css         # Side panel styles
-├── sidepanel.js          # Side panel functionality
-├── icons/                # Extension icons
-└── README.md             # This file
+├── sidepanel.html        # Side panel HTML structure
+├── sidepanel.css         # Modern responsive styles
+├── sidepanel.js          # Side panel functionality & UI
+├── imageDB.js           # IndexedDB management for images
+├── validate.js          # Input validation utilities
+├── icons/               # Extension icons (16,32,48,128px)
+│   ├── icon16.svg       # SVG source
+│   └── *.png           # PNG versions for Chrome
+└── docs/               # Documentation files
+    ├── README.md       # This file
+    ├── README_KO.md    # Korean documentation
+    ├── INSTALLATION.md # Installation guide
+    └── INSTALLATION_KO.md # Korean installation guide
 ```
 
-### Building
+### Building & Testing
 
-No build process required - this is a pure JavaScript extension that can be loaded directly into Chrome.
+**No Build Required**: Pure JavaScript extension, loads directly into Chrome
 
-### Testing
+**Testing Checklist**:
+1. ✅ Load extension in Chrome Developer Mode
+2. ✅ Copy text from various websites 
+3. ✅ Right-click save images from different domains
+4. ✅ Verify side panel opens with Ctrl+Shift+H
+5. ✅ Test copying items back to clipboard
+6. ✅ Test delete functionality and clear all
+7. ✅ Verify responsive design at different panel widths
+8. ✅ Test image format conversion (JPEG→PNG)
 
-1. Load the extension in Chrome
-2. Copy some text from various websites
-3. Open the side panel to verify history appears
-4. Test copying items back to clipboard
-5. Test delete functionality and clear all
+### Development Commands
 
-## Roadmap
+```bash
+# Icon generation
+python create_sideclip_icons.py
 
-Future versions may include:
-- Search functionality
-- Settings/options page
-- Cloud sync
-- Image clipboard support
-- Pinned/favorite items
-- Export/import functionality
+# Icon preview
+open icon-preview.html
 
-## License
+# Extension reload
+Chrome Extensions → Developer Mode → Reload
+```
 
-MIT License
+## 🗺️ Roadmap & Future Features
+
+### Planned Features
+- 🔍 **Search Functionality**: Search through text and image history
+- ⚙️ **Settings Page**: Customizable options and preferences  
+- ☁️ **Cloud Sync**: Optional sync across devices
+- 📌 **Pinned Items**: Mark important items as favorites
+- 📊 **Export/Import**: Backup and restore functionality
+- 🏷️ **Categories**: Organize clips with tags or folders
+
+### Technical Improvements
+- 🎨 **Theme Support**: Dark/light mode options
+- 🔔 **Notifications**: Optional copy confirmations
+- 📱 **Mobile Support**: Future mobile browser compatibility
+- 🚀 **Performance**: Further optimization for large histories
+
+## 📄 [License](LICENSE.md)
+
+MIT License - see LICENSE file for details
+
+---
+
+**SideClip v1.2.250815** - Made with ❤️ for productivity enthusiasts

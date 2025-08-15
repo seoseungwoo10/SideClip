@@ -1,94 +1,165 @@
 # SideClip Installation Guide
 
-## Quick Installation (Development Mode)
+Complete installation and setup guide for the SideClip Chrome extension with text and image clipboard history functionality.
 
-1. **Open Chrome Extensions Page**
-   - Open Google Chrome
-   - Navigate to `chrome://extensions/`
-   - Or use Menu → More Tools → Extensions
+## 🚀 Quick Installation (Development Mode)
 
-2. **Enable Developer Mode**
+### Prerequisites
+- **Google Chrome**: Version 114 or higher (required for Manifest V3 and Side Panel API)
+- **Operating System**: Windows, macOS, or Linux
+- **Permissions**: Admin rights may be needed for extension installation
+
+### Step-by-Step Installation
+
+1. **Download SideClip**
+   - Clone the repository: `git clone [repository-url]`
+   - Or download ZIP file and extract to a folder
+   - Ensure all files are in the `SideClip/` directory
+
+2. **Open Chrome Extensions Page**
+   - Method 1: Navigate to `chrome://extensions/`
+   - Method 2: Chrome Menu → More Tools → Extensions
+   - Method 3: Right-click Chrome toolbar → Manage Extensions
+
+3. **Enable Developer Mode**
    - Toggle the "Developer mode" switch in the top-right corner
+   - Additional developer options will appear
 
-3. **Load the Extension**
+4. **Load the Extension**
    - Click "Load unpacked" button
-   - Navigate to and select the `chrome-clipboard` folder
+   - Navigate to and select the `SideClip` folder
+   - Ensure you select the folder containing `manifest.json`
    - The extension should appear in your extensions list
 
-4. **Verify Installation**
-   - Look for the SideClip icon in your Chrome toolbar
-   - If not visible, click the extensions puzzle icon and pin SideClip
+5. **Verify Installation**
+   - Look for the SideClip icon (📋) in your Chrome toolbar
+   - If not visible, click the extensions puzzle piece icon (⋮) and pin SideClip
+   - Extension should show as "Enabled" in the extensions page
 
-## Usage
+## 🎯 Initial Setup & Testing
 
 ### First Time Setup
-1. Try copying some text from any webpage (Ctrl+C)
-2. Click the SideClip icon or press Ctrl+Shift+H
-3. Your copied text should appear in the side panel
 
-### Daily Usage
-- **Copy text**: Select text and press Ctrl+C as usual
-- **Open history**: Click SideClip icon or press Ctrl+Shift+H  
-- **Copy from history**: Click any item in the list
-- **Delete items**: Click the × button next to any item
-- **Clear all**: Click "Clear All" button (with confirmation)
+1. **Test Text Functionality**
+   ```
+   1. Visit any webpage
+   2. Select and copy some text (Ctrl+C or Cmd+C)
+   3. Click the SideClip icon or press Ctrl+Shift+H
+   4. Verify your copied text appears in the side panel
+   ```
 
-## Troubleshooting
+2. **Test Image Functionality**
+   ```
+   1. Find an image on any webpage
+   2. Right-click the image
+   3. Select "📋 SideClip에 이미지 복사" from context menu
+   4. Open SideClip to see the image thumbnail
+   5. Click the thumbnail to copy it back to clipboard
+   ```
 
-### Extension Won't Load
-- Make sure you selected the correct folder containing `manifest.json`
-- Check that all files are present (see file list below)
-- Look for errors in the Chrome Extensions page
+3. **Test Keyboard Shortcuts**
+   ```
+   - Ctrl+Shift+H (Cmd+Shift+H on Mac): Toggle side panel
+   - Escape: Close confirmation dialogs
+   ```
 
-### Copy Detection Not Working  
-- Make sure you're copying text (not images)
-- Try refreshing the webpage and copying again
-- Check if the extension has the necessary permissions
+### Troubleshooting First Setup
 
-### Side Panel Won't Open
-- Try clicking the extension icon directly
-- Check if the keyboard shortcut conflicts with other extensions
-- Reload the extension and try again
+**Issue**: SideClip icon not visible
+- **Solution**: Click extensions puzzle icon → Pin SideClip
 
-## Required Files
+**Issue**: Context menu not appearing
+- **Solution**: Reload extension in chrome://extensions/
 
-Your extension folder should contain:
+**Issue**: Side panel not opening
+- **Solution**: Ensure Chrome version 114+, try restarting Chrome
+
+## 📋 Daily Usage Guide
+
+### Text Operations
+- **Copy Text**: Select text and use Ctrl+C as usual
+- **Access History**: Click SideClip icon or Ctrl+Shift+H
+- **Reuse Text**: Click any text item in history
+- **Delete Text**: Click "×" button next to items
+
+### Image Operations  
+- **Save Images**: Right-click image → "📋 SideClip에 이미지 복사"
+- **View Images**: Thumbnails show in history with size info
+- **Copy Images**: Click thumbnail to copy as PNG to clipboard
+- **Delete Images**: Use "×" button or "Clear All"
+
+## 🔧 Advanced Configuration
+
+### Permissions Overview
+SideClip requires these permissions for full functionality:
+
+- **storage**: Save clipboard history locally
+- **sidePanel**: Display history in Chrome's side panel
+- **activeTab**: Detect copy events on current tab
+- **contextMenus**: Add image save option to right-click menu
+- **scripting**: Inject content script for copy detection
+- **clipboardRead**: Access clipboard for image operations
+- **host_permissions**: Access all HTTP/HTTPS sites for image download
+
+### Storage Information
+- **Text Storage**: Chrome's local storage (chrome.storage.local)
+- **Image Storage**: Browser's IndexedDB for large file support
+- **History Limit**: 50 most recent items (auto-cleanup)
+- **Size Limits**: 5MB maximum per image file
+- **Location**: Local device only (no cloud sync)
+
+## 🛠️ Troubleshooting
+
+### Common Issues & Solutions
+
+**❌ Extension won't load**
+- Check Chrome version (114+ required)
+- Ensure `manifest.json` is in the selected folder
+- Try restarting Chrome and reloading extension
+
+**❌ Text not being captured**
+- Verify content script injection in developer tools
+- Check if website blocks content scripts
+- Try reloading the page
+
+**❌ Images not saving**
+- Check if image exceeds 5MB limit
+- Verify internet connection for external images
+- Try different image formats (JPEG, PNG, GIF)
+
+**❌ Side panel not opening**
+- Update Chrome to version 114 or higher
+- Check if Side Panel API is supported
+- Try keyboard shortcut Ctrl+Shift+H
+
+**❌ Context menu missing**
+- Reload extension in chrome://extensions/
+- Check if other extensions interfere
+- Right-click specifically on images, not other elements
+
+## 📞 Support & Resources
+
+### Getting Help
+- **GitHub Issues**: Report bugs and feature requests
+- **Documentation**: Check README.md for detailed information
+- **Console Logs**: Include error messages when reporting issues
+
+### Required Files Structure
 ```
-chrome-clipboard/
-├── manifest.json
-├── background.js  
-├── content.js
-├── sidepanel.html
-├── sidepanel.css
-├── sidepanel.js
-├── icons/
-│   ├── icon16.png
-│   ├── icon32.png
-│   ├── icon48.png
-│   └── icon128.png
-└── README.md
+SideClip/
+├── manifest.json          # Extension manifest (v3)
+├── background.js          # Service worker with image handling
+├── content.js            # Content script for copy detection
+├── sidepanel.html        # Side panel HTML structure
+├── sidepanel.css         # Modern responsive styles
+├── sidepanel.js          # Side panel functionality & UI
+├── imageDB.js           # IndexedDB management for images
+├── validate.js          # Input validation utilities
+├── icons/               # Extension icons (all sizes)
+└── docs/               # Documentation files
 ```
 
-## Known Limitations (MVP)
+---
 
-- Only captures plain text (no images/rich content)
-- Limited to 50 most recent items
-- No search functionality
-- No cloud sync between devices
-- No import/export features
-
-## Next Steps
-
-Once you verify the extension works:
-1. Replace placeholder icons with proper PNG icons (see `icons/ICON_GENERATION.md`)
-2. Test all features thoroughly  
-3. Consider publishing to Chrome Web Store
-4. Gather user feedback for future improvements
-
-## Support
-
-If you encounter issues:
-1. Check the Chrome Extensions page for error messages
-2. Open Chrome DevTools on the side panel (right-click → Inspect)
-3. Check the browser console for JavaScript errors
-4. Verify all files are properly formatted
+**SideClip v1.2.250815** - Installation Guide  
+For technical support, please refer to the GitHub repository.
