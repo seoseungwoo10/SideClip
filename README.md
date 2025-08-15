@@ -179,19 +179,9 @@ Chrome Extensions → Developer Mode → Reload
 - 📱 **Mobile Support**: Future mobile browser compatibility
 - 🚀 **Performance**: Further optimization for large histories
 
-## 📄 License
+## 📄 [License](LICENSE.md)
 
 MIT License - see LICENSE file for details
-
-## 🤝 Contributing
-
-Contributions welcome! Please read contributing guidelines and submit pull requests.
-
-## 📞 Support
-
-- **Issues**: GitHub Issues for bug reports
-- **Feature Requests**: GitHub Discussions
-- **Documentation**: See docs/ folder for detailed guides
 
 ---
 
