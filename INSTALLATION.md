@@ -147,19 +147,17 @@ SideClip requires these permissions for full functionality:
 ### Required Files Structure
 ```
 SideClip/
-├── manifest.json          # Extension manifest (v3)
-├── background.js          # Service worker with image handling
+├── manifest.json         # Extension manifest (v3)
+├── background.js         # Service worker with image handling
 ├── content.js            # Content script for copy detection
 ├── sidepanel.html        # Side panel HTML structure
 ├── sidepanel.css         # Modern responsive styles
 ├── sidepanel.js          # Side panel functionality & UI
-├── imageDB.js           # IndexedDB management for images
-├── validate.js          # Input validation utilities
-├── icons/               # Extension icons (all sizes)
-└── docs/               # Documentation files
+├── imageDB.js            # IndexedDB management for images
+├── validate.js           # Input validation utilities
+├── icons/                # Extension icons (all sizes)
+└── docs/                 # Documentation files
 ```
 
 ---
 
-**SideClip v1.2.250815** - Installation Guide  
-For technical support, please refer to the GitHub repository.
