@@ -216,19 +216,17 @@ SideClip의 완전한 기능을 위해 필요한 권한:
 ### 필요한 파일 구조
 ```
 SideClip/
-├── manifest.json          # 확장 프로그램 매니페스트 (v3)
-├── background.js          # 이미지 처리가 포함된 서비스 워커
+├── manifest.json         # 확장 프로그램 매니페스트 (v3)
+├── background.js         # 이미지 처리가 포함된 서비스 워커
 ├── content.js            # 복사 감지를 위한 콘텐츠 스크립트
 ├── sidepanel.html        # 사이드 패널 HTML 구조
 ├── sidepanel.css         # 현대적인 반응형 스타일
 ├── sidepanel.js          # 사이드 패널 기능 및 UI
-├── imageDB.js           # 이미지용 IndexedDB 관리
-├── validate.js          # 입력 유효성 검사 유틸리티
-├── icons/               # 확장 프로그램 아이콘 (모든 크기)
-└── docs/               # 문서 파일
+├── imageDB.js            # 이미지용 IndexedDB 관리
+├── validate.js           # 입력 유효성 검사 유틸리티
+├── icons/                # 확장 프로그램 아이콘 (모든 크기)
+└── docs/                 # 문서 파일
 ```
 
 ---
 
-**SideClip v1.2.250815** - 설치 가이드  
-기술 지원은 GitHub 저장소를 참조하세요.
